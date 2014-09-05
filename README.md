@@ -67,15 +67,13 @@ Does multiple types of check as to whether or not a given feature should be
 enabled, in descending order of precedence:
 
 1. **boolean**: On or off for everyone.
-2. **groups**: For some users (or whatever object gets passed into
-   `isEnabled()`), but based on a predicate registered with this group name,
-   supplied during the server's `Meteor.startup()`.
-3. **users**: Straight-up match on the `_id` of an object supplied to
+2. **groups**: For some users based on a predicate registered with
+   this group name, supplied during the server's `Meteor.startup()`.
+3. **users**: Straight-up match on the `_id` of a user supplied to
    `isEnabled()`.
-4. **proportion**: A deterministic subset of the type of item passed in to
-   `isEnabled()`. For slow ramp-up of a new feature. ∈[0,1]. Meant to allow
-   gradual increase towards 1.0 (functionally equivalent to `boolean: true`)
-   without necessarily restarting the server.
+4. **proportion**: A deterministic subset of users.  For slow ramp-up of a new
+   feature. ∈[0,1]. Meant to allow gradual increase towards 1.0 (functionally
+   equivalent to `boolean: true`) without necessarily restarting the server.
 
 Example Mongo document:
 
@@ -84,7 +82,7 @@ Example Mongo document:
   "_id":         "experimentalSearch",
   "boolean":     false,
   "groups":      ["usersFromCompanyA", "usersWithNamesStartingWithM", "firstTenUsers"],
-  "users":       ["id3", "id2", "id1"],
+  "users":       ["userId1", "userId2", "userId3"],
   "proportion":  0.2
 }
 ```
@@ -93,7 +91,7 @@ groups
 ------
 
 For arbitrary groupings based on a (server-side) predicate. Could be as simple
-as checking a property on the object supplied to the registered predicate, or
+as checking a property on the user supplied to the registered predicate, or
 some calculation on the broader state of the application. 
 
 ```JavaScript
@@ -142,6 +140,6 @@ The client-side documents gets filtered down to simply `[ {_id: 'featureName1'},
 
 Client-side `isEnabled()` checks end up being a thin function wrapper around a
 straightforward collection `findOne({_id: 'experimentalSearch'})`, and all
-user, group and proportion decisions about features get made entirely by the
+actor, group and proportion decisions about features get made entirely by the
 server via the `flippers` publication.
 
