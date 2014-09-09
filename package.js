@@ -13,6 +13,6 @@ Package.on_use(function(api) {
 
 Package.on_test(function(api) {
   api.use('tinytest');
-  api.use('flippers');
+  api.use('flipper');
   api.add_files('test/flippers.js');
 });
