@@ -4,7 +4,7 @@ Package.describe({
 });
 
 Package.on_use(function(api) {
-  api.use(['underscore', 'accounts-base']);
+  api.use(['underscore', 'accounts-base', 'handlebars']);
   api.add_files('lib/flippers.js');
   if (api.export) {
     api.export('Flipper');
