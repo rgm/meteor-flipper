@@ -28,7 +28,7 @@ if (experimentalSearch.isEnabled()) {
 ### in client-side Spacebars:
 
 ```Handlebars
-{{#flipper 'experimentalSearch'}}
+{{#flipper name='experimentalSearch'}}
   {{> dodgyNewSearchUI }}
 {{else}}
   {{> searchUI }}

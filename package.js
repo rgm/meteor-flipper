@@ -1,11 +1,15 @@
 Package.describe({
   summary: "User-level feature flippers",
-  version: "1.0.0",
+  version: "1.1.0",
 });
 
 Package.on_use(function(api) {
-  api.use(['underscore', 'accounts-base', 'handlebars']);
+  api.use('underscore');
+  api.use('accounts-base');
+  api.use('templating');
+
   api.add_files('lib/flippers.js');
+  api.add_files('lib/flippers.html');
   if (api.export) {
     api.export('Flipper');
   }
