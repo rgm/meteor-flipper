@@ -8,8 +8,8 @@ Package.on_use(function(api) {
   api.use('accounts-base');
   api.use('templating');
 
-  api.add_files('lib/flippers.js');
   api.add_files('lib/flippers.html');
+  api.add_files('lib/flippers.js');
   if (api.export) {
     api.export('Flipper');
   }
