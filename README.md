@@ -49,6 +49,7 @@ if (experimentalSearch.isEnabled(user)) {
 }
 
 // mutators will cause a correct update() on the backing Mongo document
+// NB: mutators are proposed, not yet implemented.
 experimentalSearch.enable();                // for all clients, unconditionally
 experimentalSearch.disable();               
 experimentalSearch.enable(Flipper.group('usersWithNamesStartingWithM'));
@@ -73,7 +74,8 @@ enabled, in descending order of precedence:
    `isEnabled()`.
 4. **proportion**: A deterministic subset of users.  For slow ramp-up of a new
    feature. ∈[0,1]. Meant to allow gradual increase towards 1.0 (functionally
-   equivalent to `boolean: true`) without necessarily restarting the server.
+   equivalent to `boolean: true`) without necessarily restarting the server. (NB:
+   this is a proposed feature, not yet implemented).
 
 Example Mongo document:
 
