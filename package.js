@@ -1,6 +1,7 @@
 Package.describe({
   summary: "User-level feature flippers",
   version: "1.1.1",
+  git: "https://github.com/rgm/meteor-flipper"
 });
 
 Package.on_use(function(api) {
