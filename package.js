@@ -1,6 +1,6 @@
 Package.describe({
   summary: "User-level feature flippers",
-  version: "1.1.2",
+  version: "1.1.3",
   git: "https://github.com/rgm/meteor-flipper"
 });
 
