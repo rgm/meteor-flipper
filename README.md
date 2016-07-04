@@ -26,6 +26,24 @@ if (experimentalSearch.isEnabled()) {
 }
 ```
 
+or 
+
+```JavaScript
+Template.something.rendered = function () {
+  var tmpl = this;
+  tmpl.autorun(function (c) {
+    var ready = Flipper.ready();
+    var experimentalSearch = Flipper('experimentalSearch');
+    if (ready && experimentalSearch.isEnabled()) {
+      // submit to the new search method
+    } else {
+      // submit to the old search method
+    }
+    c.stop();
+  });
+};
+```
+
 ### in client-side Spacebars:
 
 ```Handlebars
