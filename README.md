@@ -7,6 +7,7 @@ production-tested [jnunemaker/flipper](https://github.com/jnunemaker/flipper).
 background
 ----------
 
+- http://martinfowler.com/articles/feature-toggles.html
 - http://martinfowler.com/bliki/FeatureToggle.html
 - http://code.flickr.net/2009/12/02/flipping-out/
 - http://blog.jayfields.com/2010/10/experience-report-feature-toggle-over.html
